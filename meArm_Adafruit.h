@@ -15,7 +15,7 @@
 #include <Adafruit_PWMServoDriver.h>
 #include <Arduino.h>
 const float pi=3.14159265359;
-
+//各个舵机参数
 struct ServoInfo {
     int n_min, n_max;   // PWM 'soft' limits - should be just within range
     float gain;         // PWM per radian
@@ -25,6 +25,7 @@ struct ServoInfo {
 class meArm {
   public:
     //Full constructor uses calibration data, or can just give pins
+    //舵机角度极限
     meArm(int sweepMinBase=145, int sweepMaxBase=49, float angleMinBase=-pi/4, float angleMaxBase=pi/4,
       int sweepMinShoulder=118, int sweepMaxShoulder=22, float angleMinShoulder=pi/4, float angleMaxShoulder=3*pi/4,
       int sweepMinElbow=144, int sweepMaxElbow=36, float angleMinElbow=pi/4, float angleMaxElbow=-pi/4,

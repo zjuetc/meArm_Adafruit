@@ -83,7 +83,7 @@ bool solve(float x, float y, float z, float& a0, float& a1, float& a2)
     float r, th0;
     cart2polar(y, x, r, th0);
 
-    // Account for the wrist length!
+    // Account for the wrist length!减去L3
     r -= L3;
 
     // In arm plane, convert to polar

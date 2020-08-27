@@ -22,12 +22,13 @@ bool setup_servo (ServoInfo& svo, const int n_min, const int n_max,
     float n_range = n_max - n_min;
     float a_range = a_max - a_min;
 
-    // Must have a non-zero angle range
+    // Must have a non-zero angle range 
     if(a_range == 0) return false;
 
     // Calculate gain and zero
+    //y= kx+b b=y-kx  k=svo.gain   b=svo.zero 截距 0度对应的角度值 
     svo.gain = n_range / a_range;
-    svo.zero = n_min - svo.gain * a_min;
+    svo.zero = n_min - svo.gain * a_min;//
 
     // Set limits
     svo.n_min = n_min;
@@ -35,7 +36,7 @@ bool setup_servo (ServoInfo& svo, const int n_min, const int n_max,
 
     return true;
 }
-
+//angle pi弧度制 y=kx+b y是角度制
 int angle2pwm (const ServoInfo& svo, const float angle)
 {
   int pwm = 150 + int(0.5f + 450.0 * (svo.zero + svo.gain * angle) / 180.0);
